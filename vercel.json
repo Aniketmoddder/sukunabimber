@@ -1,10 +1,53 @@
 {
   "functions": {
     "api/bomb.js": {
-      "maxDuration": 30
+      "maxDuration": 30,
+      "memory": 1024
     },
     "api/keys/generate.js": {
-      "maxDuration": 10
+      "maxDuration": 10,
+      "memory": 512
+    },
+    "api/stats.js": {
+      "maxDuration": 5,
+      "memory": 512
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/api/bomb",
+      "destination": "/api/bomb.js"
+    },
+    {
+      "source": "/api/keys/generate",
+      "destination": "/api/keys/generate.js"
+    },
+    {
+      "source": "/api/stats",
+      "destination": "/api/stats.js"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "X-API-Key, Content-Type, Authorization"
+        },
+        {
+          "key": "X-Powered-By",
+          "value": "Sukuna API v2.0"
+        }
+      ]
+    }
+  ]
 }
