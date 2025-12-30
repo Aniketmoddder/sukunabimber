@@ -1,0 +1,10 @@
+{
+  "functions": {
+    "api/bomb.js": {
+      "maxDuration": 30
+    },
+    "api/keys/generate.js": {
+      "maxDuration": 10
+    }
+  }
+}
